@@ -3,6 +3,8 @@ package fr.lernejo.guessgame;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Simulation {
@@ -10,7 +12,10 @@ public class Simulation {
 private final Logger logger = LoggerFactory.getLogger("simulation");
 private final Player player;  //TODO add variable type
 private  long numberToGuess; //TODO add variable type
-Scanner sc = new Scanner(System.in);
+private final ComputerPlayer computerPlayer = new ComputerPlayer();
+
+//Date date = new Date(currentTime); //if you really have long
+//String debut = new SimpleDateFormat("mm:ss:SSS").format(date.getTime());
 
 public Simulation(Player player) {
     //TODO implement me
@@ -22,26 +27,33 @@ public void initialize(long numberToGuess) {
     this.numberToGuess = numberToGuess;
 }
 
-/**
- * @return true if the player have guessed the right number
- */
 private boolean nextRound() {
     //TODO implement me
-    long nbr;
+    /*long nbr;
     System.out.println("Enter a number : ");
-    nbr = sc.nextLong();
+    nbr = sc.nextLong();*/
 
-    if(nbr == numberToGuess){
+    if(player.askNextGuess() == numberToGuess){
 
         logger.log("You are right");
         return true;
     }
     else{
-        if(nbr < numberToGuess)
-            player.respond(false);
+        if(player.askNextGuess() < numberToGuess){
 
-        if(nbr > numberToGuess)
+            player.respond(false);
+            computerPlayer.borneInf = computerPlayer.borneInf + 1;
+            computerPlayer.borneSup = player.askNextGuess();
+        }
+
+
+        if(player.askNextGuess() > numberToGuess){
+
             player.respond(true);
+            computerPlayer.borneInf = computerPlayer.borneInf + 1;
+            computerPlayer.borneSup = player.askNextGuess();
+
+        }
 
         logger.log("You are wrong");
         return false;
@@ -49,10 +61,19 @@ private boolean nextRound() {
 
 }
 
-public void loopUntilPlayerSucceed() {
+public void loopUntilPlayerSucceed(long max_iter) { //long max_iter
     //TODO implement me
-    while(nextRound() != true){
+    long time1 = System.currentTimeMillis();
+    while (nextRound() != true) {
+        max_iter--;
         nextRound();
     }
+
+    long time2 = System.currentTimeMillis();
+    long currentTime = time2 - time1;
+    Date date = new Date(currentTime);
+    String result = new SimpleDateFormat("mm:ss:SS").format(date);
+    System.out.println(result);
 }
 }
+
