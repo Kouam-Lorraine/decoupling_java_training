@@ -7,7 +7,7 @@ public class Launcher {
 
     public static void main(String[] args){
 
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
 
         if(args.length == 1 && args[0].equals("-interactive")){
 
@@ -18,7 +18,7 @@ public class Launcher {
             //long randomNumber = random.nextLong(); // génère un nombre entre Long.MIN_VALUE et Long.MAX_VALUE
             long randomNumber = random.nextInt(100); // génère un nombre entre 0 (inclus) et 100 (exclus)
 
-            System.out.println(randomNumber);
+            //System.out.println(randomNumber);
             simulation.initialize(randomNumber);
             simulation.loopUntilPlayerSucceed(Long.MAX_VALUE);
         }
@@ -34,11 +34,14 @@ public class Launcher {
 
         else{
 
-            do{
+            System.out.print("Enter one argument :  \"-interactive \" ");
+            System.out.println(" or two arguments : \"-auto and a number \" ");
+
+            /*do{
                 System.out.println("Enter one argument :  \"-interactive \" ");
                 System.out.println("or two arguments : \"-auto and a number \" ");
             }
-            while(args.length == 1 || args.length == 2 && (!(args[0].equals("-interactive")) || !(args[0].equals("-auto"))));
+            while(args.length == 1 || args.length == 2 && (!(args[0].equals("-interactive")) || !(args[0].equals("-auto"))));*/
             /*while(args.length == 2 && (!(args[0].equals("-interactive")) || !(args[0].equals("-auto")))){
 
                 System.out.println("Enter -interactive or -auto");

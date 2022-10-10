@@ -8,10 +8,10 @@ import java.util.Scanner;
 
 public class ComputerPlayer implements Player{ // implements Player
 
-    private final Logger logger = new LoggerFactory().getLogger("computer");
+    private final Logger logComputer = new LoggerFactory().getLogger("computer");
 
-   public long borneInf = 0;
-    public long borneSup = Long.MAX_VALUE;
+   public long borneInf = Long.MIN_VALUE;
+    public long borneSup = Long.MAX_VALUE;//Long.MAX_VALUE
 
     /*SecureRandom random = new SecureRandom();
     long randomNumber = random.nextInt((int) borneSup); // génère un nombre entre 0 (inclus) et 100 (exclus)
@@ -19,17 +19,19 @@ public class ComputerPlayer implements Player{ // implements Player
 
     public long askNextGuess(){
 
-        return (borneSup + borneInf)/2;
+        return (borneSup + borneInf) / 2;
 
     }
 
     public void respond(boolean lowerOrGreater){
 
         if(lowerOrGreater == true){
-            logger.log("The number is greater than the previous");
+            logComputer.log("The number is greater than the previous");
+            borneInf = askNextGuess() - 1;
         }
         else{
-            logger.log("The number is lower than the previous");
+            logComputer.log("The number is lower than the previous");
+            borneSup = askNextGuess() + 1;
         }
 
     }
