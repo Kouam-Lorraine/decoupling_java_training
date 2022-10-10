@@ -11,12 +11,8 @@ public class ComputerPlayer implements Player{ // implements Player
 
     private final Logger logComputer = new LoggerFactory().getLogger("computer");
 
-   public long borneInf = Long.MIN_VALUE;
+    public long borneInf = Long.MIN_VALUE;
     public long borneSup = Long.MAX_VALUE;//Long.MAX_VALUE
-
-    /*SecureRandom random = new SecureRandom();
-    long randomNumber = random.nextInt((int) borneSup); // génère un nombre entre 0 (inclus) et 100 (exclus)
-    Scanner sc = new Scanner(System.in);*/
 
     public long askNextGuess(){
 
@@ -26,13 +22,13 @@ public class ComputerPlayer implements Player{ // implements Player
 
     public void respond(boolean lowerOrGreater){
 
-        if(lowerOrGreater == true){
+        if(lowerOrGreater == false){
             logComputer.log("The number is greater than the previous");
-            borneInf = askNextGuess() - 1;
+            borneInf = askNextGuess() + 1;
         }
         else{
             logComputer.log("The number is lower than the previous");
-            borneSup = askNextGuess() + 1;
+            borneSup = askNextGuess() - 1;
         }
 
     }

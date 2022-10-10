@@ -31,22 +31,22 @@ private boolean nextRound() {
     long guess = player.askNextGuess();
     if(guess == numberToGuess){
 
-        logger.log("Found");
         b = true;
+        logger.log("Found");
     }
     else if(guess < numberToGuess){
 
-        logger.log("not found");
-        player.respond(false);
         b = false;
+        //logger.log("not found");
+        player.respond(true);
 
     }
 
     else if(guess > numberToGuess){
 
-        logger.log("not found");
-        player.respond(true);
         b = false;
+        //logger.log("not found");
+        player.respond(false);
     }
     return b;
 
@@ -55,10 +55,10 @@ private boolean nextRound() {
 public void loopUntilPlayerSucceed(long max_iter) { //long max_iter
     //TODO implement me
     long time1 = System.currentTimeMillis();
+    //boolean bool = nextRound();
     while (max_iter != 0) {
 
         if(nextRound() == true) {
-            //logger.log("");
             break;
         }
         max_iter--;
@@ -72,6 +72,7 @@ public void loopUntilPlayerSucceed(long max_iter) { //long max_iter
     Date date = new Date(currentTime);
     String result = new SimpleDateFormat("mm:ss:SS").format(date);
     System.out.println(result);
+    logger.log("end");
 }
 }
 

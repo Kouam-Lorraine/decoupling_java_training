@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class HumanPlayer implements Player{
 
-    private final Logger logHuman = new LoggerFactory().getLogger("player");
+    public Logger logHuman = new LoggerFactory().getLogger("player");
     Scanner sc = new Scanner(System.in);
 
     public long askNextGuess(){
@@ -18,11 +18,11 @@ public class HumanPlayer implements Player{
 
     public void respond(boolean lowerOrGreater){
 
-        if(lowerOrGreater == true){
-            logHuman.log("not found, it is great");
+        if(lowerOrGreater == false){
+            logHuman.log("greater");
         }
         else{
-            logHuman.log("not found, it is lower");
+            logHuman.log("lower");
         }
 
     }

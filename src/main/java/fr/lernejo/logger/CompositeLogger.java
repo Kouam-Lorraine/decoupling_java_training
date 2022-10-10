@@ -2,8 +2,8 @@ package fr.lernejo.logger;
 
 public class CompositeLogger implements Logger{
 
-    public final Logger log1;
-    public final Logger log2;
+    private final Logger log1;
+    private final Logger log2;
 
     public CompositeLogger(Logger log1, Logger log2){
 
