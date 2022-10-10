@@ -1,5 +1,6 @@
 package fr.lernejo.guessgame;
 
+import fr.lernejo.logger.ConsoleLogger;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
@@ -8,7 +9,7 @@ import java.util.Date;
 
 public class Simulation {
 
-private final Logger logger = LoggerFactory.getLogger("simulation");
+private final Logger logger = LoggerFactory.getLogger(new ConsoleLogger(),"Simulation");
 private final Player player;  //TODO add variable type
 private long numberToGuess; //TODO add variable type
 //private final ComputerPlayer computerPlayer = new ComputerPlayer();
@@ -56,13 +57,12 @@ public void loopUntilPlayerSucceed(long max_iter) { //long max_iter
     long time1 = System.currentTimeMillis();
     while (max_iter != 0) {
 
-        max_iter--;
-        nextRound();
-
-        if(nextRound() == true && max_iter != 0) {
-            logger.log("");
+        if(nextRound() == true) {
+            //logger.log("");
             break;
         }
+        max_iter--;
+        nextRound();
 
     }
 

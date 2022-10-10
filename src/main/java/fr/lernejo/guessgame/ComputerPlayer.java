@@ -1,5 +1,6 @@
 package fr.lernejo.guessgame;
 
+import fr.lernejo.logger.ConsoleLogger;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
@@ -8,7 +9,7 @@ import java.util.Scanner;
 
 public class ComputerPlayer implements Player{ // implements Player
 
-    private final Logger logComputer = new LoggerFactory().getLogger("computer");
+    private final Logger logComputer = new LoggerFactory().getLogger(new ConsoleLogger(), "ComputerPlayer");
 
    public long borneInf = Long.MIN_VALUE;
     public long borneSup = Long.MAX_VALUE;//Long.MAX_VALUE
