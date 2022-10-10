@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ComputerPlayer implements Player{ // implements Player
 
-    private final Logger logComputer = new LoggerFactory().getLogger(new ConsoleLogger(), "ComputerPlayer");
+    private final Logger logComputer = new LoggerFactory().getLogger("computer");
 
    public long borneInf = Long.MIN_VALUE;
     public long borneSup = Long.MAX_VALUE;//Long.MAX_VALUE

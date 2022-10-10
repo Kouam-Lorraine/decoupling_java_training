@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class Simulation {
 
-private final Logger logger = LoggerFactory.getLogger(new ConsoleLogger(),"Simulation");
+private final Logger logger = LoggerFactory.getLogger("simulation");
 private final Player player;  //TODO add variable type
 private long numberToGuess; //TODO add variable type
 //private final ComputerPlayer computerPlayer = new ComputerPlayer();

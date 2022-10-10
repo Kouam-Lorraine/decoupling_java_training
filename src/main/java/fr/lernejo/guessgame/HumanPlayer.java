@@ -1,6 +1,5 @@
 package fr.lernejo.guessgame;
 
-import fr.lernejo.logger.ConsoleLogger;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
@@ -8,7 +7,7 @@ import java.util.Scanner;
 
 public class HumanPlayer implements Player{
 
-    private final Logger logHuman = new LoggerFactory().getLogger(new ConsoleLogger(), "HumanPlayer");
+    private final Logger logHuman = new LoggerFactory().getLogger("player");
     Scanner sc = new Scanner(System.in);
 
     public long askNextGuess(){
